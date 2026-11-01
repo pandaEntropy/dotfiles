@@ -1,0 +1,50 @@
+alt + {h,j,k,l}
+    pinemsg focus {left,down,up,right}
+
+alt + Return
+    kitty
+
+alt + space
+    rofi -show drun
+
+alt + r
+    pinemsg rotate
+
+alt + m
+    pinemsg cycle_layout
+
+alt + x
+    pinemsg kill_window
+
+alt + d
+    pinemsg hide_all
+
+alt + control + Return
+    pinemsg set_master
+
+alt + control + {Left,Right}
+    pinemsg switch_workspace {left,right}
+
+alt + control + {1,2,3,4,5,6,7,8,9}
+    pinemsg move_client_ws {0,1,2,3,4,5,6,7,8}
+
+alt + control + {h,j,k,l}
+    pinemsg resize {left,down,up,right}
+
+alt + q
+    pinemsg reload_config
+
+alt + XF86MonBrightnessUp
+    brightnessctl set +10% && notify-send -h int:value:$(brightnessctl get) "Brightness"
+
+alt + XF86MonBrightnessDown
+    brightnessctl set 10%- && notify-send -h int:value:$(brightnessctl get) "Brightness"
+
+alt + XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/ilya/.local/bin/volume-notify.sh
+
+alt + XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5% && /home/ilya/.local/bin/volume-notify.sh
+
+alt + control + s
+    flameshot gui -c -p ~/Pictures/Screenshots/
