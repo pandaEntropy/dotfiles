@@ -34,17 +34,15 @@ alt + control + {h,j,k,l}
 alt + q
     pinemsg reload_config
 
-alt + XF86MonBrightnessUp
-    brightnessctl set +10% && notify-send -h int:value:$(brightnessctl get) "Brightness"
+alt + Prior
+    brightnessctl set +10% && notify-send -h int:value:$(($(brightnessctl get) * 100 / $(brightnessctl max))) "Brightness"
+alt + Next
+    brightnessctl set 10%- && notify-send -h int:value:$(($(brightnessctl get) * 100 / $(brightnessctl max))) "Brightness"
+alt + Home
+    pactl set-sink-volume @DEFAULT_SINK@ +5% && /home/echo/.local/bin/volume-notify.sh
 
-alt + XF86MonBrightnessDown
-    brightnessctl set 10%- && notify-send -h int:value:$(brightnessctl get) "Brightness"
-
-alt + XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/ilya/.local/bin/volume-notify.sh
-
-alt + XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +5% && /home/ilya/.local/bin/volume-notify.sh
+alt + End
+    pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/echo/.local/bin/volume-notify.sh
 
 alt + control + s
     flameshot gui -c -p ~/Pictures/Screenshots/
